@@ -1,1 +1,11 @@
-<p>home works!</p>
+<ul>
+    <li *ngFor="let book for books">{{ book }}</li>
+</ul>
+
+<input class="form-control" placeholder="Neues Buch erstellen" [(ngModer)]="neBookTitle">
+
+<button class="btn btn-outline-success" (click)="onButtonClicked()"> Klick mich!</button>
+
+<div class="alert alert-primary" *ngIf=" newBookTitle = ! '' ">
+    Test Alert
+</div>
