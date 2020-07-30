@@ -8,7 +8,7 @@
         <div class="col-6">
             <input class="form-control" placeholder="Neues Buch erstellen" [(ngModel)]="newBookTitle">
 
-            <button class="btn btn-outline-success" (click)="addNewBook()">Buch hinzufügen!</button>
+            <button class="mt-2 btn btn-outline-success" (click)="addNewBook()">Buch hinzufügen!</button>
 
             <div class="alert alert-primary" *ngIf=" newBookTitle !=  '' ">
                 Wenn sie auf den Button klicken, wird ein neues Buch mit dem Namen {{ newBookTitle }} erstellt.
