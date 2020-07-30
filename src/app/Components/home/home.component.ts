@@ -30,9 +30,10 @@ export class HomeComponent implements OnInit {
     return "Buch: " + title;
   }
 
-  public onButtonClicked() {
+  public addNewBook() {
     //this.showAlert = !this.showAlert;
-    this.books.push("Buch Nr." + Math.round(Math.random() * 100))
+    this.books.push(this.newBookTitle);
+    this.newBookTitle = "";
   }
 
 }
