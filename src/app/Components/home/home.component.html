@@ -13,9 +13,13 @@
                 Buch hinzufügen!
             </button>
 
-            <div class="'alert alert-' + (newBookTitle.length < maxTitleLength  ? 'primary' : 'warning') "
+            <div [class]="'alert alert-' + (newBookTitle.length <= maxTitleLength  ? 'primary' : 'warning') "
                 *ngIf=" newBookTitle !=  '' ">
-                Wenn sie auf den Button klicken, wird ein neues Buch mit dem Namen <i>{{ newBookTitle }}</i> erstellt.
+                <span *ngIf="newBookTitle.length <= maxTitleLength">Wenn sie auf den Button klicken, wird ein neues Buch
+                    mit dem Namen<i>{{ newBookTitle }}</i>erstellt.</span>
+                <span *ngIf="newBookTitle.length > maxTitleLength">Der Titel ist mit {{newBookTitle.length}} Zeichen
+                    {{newBookTitle.length >= maxTitleLength * 2 ? 'viel' : ''}} zulang
+                    {{newBookTitle.length >= maxTitleLength * 3 ? ', du Depp' : ''}}!</span>
             </div>
         </div>
     </div>
