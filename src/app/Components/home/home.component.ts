@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.books = this.storageService.getBooks();
   }
 
-  public transformBooTitle(title): string {
+  public transformBookTitle(title): string {
     return "Buch: " + title;
   }
 

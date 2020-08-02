@@ -9,8 +9,8 @@ export class StorageService {
   constructor() {
     this.books = JSON.parse(localStorage.getItem("books"));
     if (!this.books) {
-      this.books = [];
-    }
+      this.books = []
+    };
   }
 
   private books: string[] = [];
