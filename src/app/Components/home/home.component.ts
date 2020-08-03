@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from 'src/app/service/storage.service';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { AuthenticationGuard } from 'src/app/guards/authentication.guard';
 
 @Component({
   selector: 'app-home',

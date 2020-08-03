@@ -4,6 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  public isLoggedIn: boolean = false;
 
-  constructor() { }
+  public loggin(username: string, password: string): boolean {
+    if (username == "test" && password == "cool") {
+      this.isLoggedIn = true;
+      return true;
+    } else () => {
+      this.isLoggedIn = false;
+      return false;
+    }
+  }
 }
