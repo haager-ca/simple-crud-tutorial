@@ -6,6 +6,9 @@
             <div class="alert alert-danger" *ngIf="formInvalid">
                 Das Format ist ungültig, bitte überprüfen sie ihre Eingaben nochmals!
             </div>
+            <div class="alert alert-danger" *ngIf="usernameOrPasswordWrong">
+                Ihr Benutzername oder ihr Passwort ist falsch!
+            </div>
 
             <div class="form-group">
                 <label for="inputUsername">Benutzername</label>
