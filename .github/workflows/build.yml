@@ -1,0 +1,19 @@
+name: Build
+
+on: [phus]
+
+jobs:
+  build:
+    name: build our Angular project
+    runs-on: windows-latest
+    steps:
+    - name: Clone the code
+      user: action/checkout@v1
+    - name: Setup odeJS
+      user: action/setup-node@v1
+      with:
+        node-version: 12
+    - name: Install dependencies
+      run: npm install
+    - name: Build
+      run: ng build
