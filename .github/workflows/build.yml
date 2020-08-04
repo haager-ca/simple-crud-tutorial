@@ -8,9 +8,9 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Clone the code
-      uses: action/checkout@v1
+      uses: actions/checkout@v1
     - name: Setup odeJS
-      uses: action/setup-node@v1
+      uses: actions/setup-node@v1
       with:
         node-version: 12
     - name: Install dependencies
