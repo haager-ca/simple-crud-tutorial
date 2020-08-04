@@ -1,6 +1,6 @@
 name: Build
 
-on: [phus]
+on: [push]
 
 jobs:
   build:
