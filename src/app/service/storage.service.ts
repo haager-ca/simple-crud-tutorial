@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { stringify } from '@angular/compiler/src/util';
+import { Book } from '../classes/book';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,13 @@ export class StorageService {
     };
   }
 
-  private books: string[] = [];
+  private books: Book[] = [];
 
-  public getBooks(): string[] {
+  public getBooks(): Book[] {
     return this.books;
   }
 
-  public setBooks(books: string[]): void {
+  public setBooks(books: Book[]): void {
     this.books = books;
     localStorage.setItem("books", JSON.stringify(this.books));
   }

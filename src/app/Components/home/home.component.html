@@ -2,11 +2,12 @@
     <div class="row">
         <div class="col-6">
             <ul>
-                <li *ngFor="let book of books">{{ book }}</li>
+                <li *ngFor="let book of books">{{ book.title }}, Autoren:{{ book.authors }}</li>
             </ul>
         </div>
         <div class="col-6">
             <input class="form-control" placeholder="Neues Buch erstellen" [(ngModel)]="newBookTitle">
+            <input class="form-control" placeholder="Autor eingeben" [(ngModel)]="newBookAuthor">
 
             <button class="mt-2 btn btn-outline-success" [disabled]="newBookTitle.length > maxTitleLength "
                 (click)="addNewBook()">
@@ -16,8 +17,9 @@
             <div [class]="'alert alert-' + (newBookTitle.length <= maxTitleLength  ? 'primary' : 'warning') "
                 *ngIf=" newBookTitle !=  '' ">
                 <span *ngIf="newBookTitle.length <= maxTitleLength">Wenn sie auf den Button klicken, wird ein neues Buch
-                    mit dem Namen<i>{{ newBookTitle }}</i>erstellt.</span>
-                <span *ngIf="newBookTitle.length > maxTitleLength">Der Titel ist mit {{newBookTitle.length}} Zeichen
+                    mit dem Namen<i>{{ newBookTitle }}</i>erstellt.Und dem Autor {{ newBookAuthor }}.</span>
+                <span *ngIf="newBookTitle.length > maxTitleLength">Der Titel ist mit
+                    {{newBookTitle.length}} Zeichen
                     {{newBookTitle.length >= maxTitleLength * 2 ? 'viel' : ''}} zulang
                     {{newBookTitle.length >= maxTitleLength * 3 ? ', du Depp' : ''}}!</span>
             </div>
