@@ -1,5 +1,6 @@
 .main {
  background-image: url("../assets/background.jpg");
  background-size: cover ;
- min-height: calc(100vh -- 77px);
+ background-attachment: fixed;
+ min-height:calc(100vh - 77px);
 }
