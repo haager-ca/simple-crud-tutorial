@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-5 mx-auto">
-            <h1>Login</h1>
+            <div class=" card">
+                <h1 class="text-center">Login</h1>
+            </div>
 
             <div class="alert alert-danger" *ngIf="formInvalid">
                 Das Format ist ungültig, bitte überprüfen sie ihre Eingaben nochmals!
@@ -14,8 +16,10 @@
                 <label for="inputUsername">Benutzername</label>
                 <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username"
                     placeholder="Benutzername eingeben">
-                <small class="form-text text-muted">Wir werden ihre Daten nur an Google, Apple und Microsoft
-                    verkaufen.</small>
+                <div class=" card mt-2">
+                    <small class="form-text text-muted">Wir werden ihre Daten nur an Google, Apple und Microsoft
+                        verkaufen.</small>
+                </div>
             </div>
             <div class="form-group">
                 <label for="inputPasswort">Passwort</label>
