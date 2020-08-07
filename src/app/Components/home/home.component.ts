@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   public showAlert: boolean = true;
   public newBookTitle: string = "";
   public newBookAuthor: string = "";
+  public isEdeting: number = undefined;
   public readonly maxTitleLength: number = 20;
   public books: Book[] = [];
 
@@ -29,13 +30,28 @@ export class HomeComponent implements OnInit {
   }
 
   public addNewBook() {
-    //this.showAlert = !this.showAlert;
-    const book = new Book;
-    book.title = this.newBookTitle;
-    book.authors = this.newBookAuthor ? [this.newBookAuthor] : undefined;
-    this.books.push(book);
-    this.storageService.setBooks(this.books);
+    if (this.isEdeting) {
+      //speichere die Änderungen
+      const that = this;
+      this.books = this.books.map(function (b) {
+        if (b.id == that.isEdeting) {
+          b.title = that.newBookTitle;
+          b.authors = [that.newBookAuthor];
+        }
+        return b;
+      });
+    } else {
+      // erstelle neuse Buch
+      const book = new Book;
+      book.title = this.newBookTitle;
+      book.id = Math.round(Math.random() * 100000);
+      book.authors = this.newBookAuthor ? [this.newBookAuthor] : undefined;
+      this.books.push(book);
+    }
     this.newBookTitle = "";
+    this.newBookAuthor = "";
+    this.isEdeting = undefined;
+    this.storageService.setBooks(this.books);
   }
 
   public deleteBook(book) {
@@ -47,6 +63,13 @@ export class HomeComponent implements OnInit {
         return true;
       }
     });
+    this.storageService.setBooks(this.books);
+  }
+
+  public editBook(book: Book) {
+    this.isEdeting = book.id;
+    this.newBookTitle = book.title;
+    this.newBookAuthor = book.authors.join(", ");
   }
 
 }
