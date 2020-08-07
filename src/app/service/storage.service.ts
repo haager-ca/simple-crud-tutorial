@@ -8,7 +8,7 @@ import { Book } from '../classes/book';
 export class StorageService {
 
   constructor() {
-    this.books = JSON.parse(localStorage.getItem("books"));
+    this.books = JSON.parse(localStorage.getItem("books") || "[]");
     if (!this.books) {
       this.books = []
     };
