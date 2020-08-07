@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
         if (b.id == that.isEdeting) {
           b.title = that.newBookTitle;
           b.authors = that.newBookAuthor.split(", ");
-
+          b.price = parseInt(this.newBookPrice, 10);
         }
         return b;
       });
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
       book.title = this.newBookTitle;
       book.id = Math.round(Math.random() * 100000);
       book.authors = this.newBookAuthor.split(", ");
-      book.price = 10;
+      book.price = parseInt(this.newBookPrice, 10);
       book.publishDate = new Date();
       this.books.push(book);
     }
