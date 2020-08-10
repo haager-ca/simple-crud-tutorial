@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ListBooksComponent } from "./Components/list-books/list-books.component";
 import { HomeComponent } from './Components/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './Components/login/login.component';
 import { registerLocaleData } from '@angular/common';
 
@@ -27,7 +27,8 @@ registerLocaleData(localeDe, "de-DE", localeDeExtra);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [{

@@ -26,20 +26,44 @@
             </table>
         </div>
         <div class="col-6">
-            <input class="form-control" placeholder="Neues Buch erstellen" [(ngModel)]="newBookTitle">
-            <input class="form-control" placeholder="Autor eingeben" [(ngModel)]="newBookAuthor">
-            <input class="form-control" placeholder="Preis eingeben" [(ngModel)]="newBookPrice" type="number">
+            <form [formGroup]="newBookForm">
 
-            <button class="mt-2 btn btn-outline-success" [disabled]="newBookTitle.length > maxTitleLength "
-                (click)="addNewBook()">{{isEdeting ? 'Änderungen speichern' : 'Buch hinzufügen!'}} </button>
+                <div>
+                    <input class="form-control" placeholder="Neues Buch erstellen" formControlName="title" [class.is-valid]="newBookForm.controls.title.valid" [class.is-invalid]="submitted && newBookForm.controls.title.invalid">
+                    <div class="valid-feedback" >
+                        Passt!
+                    </div>
+                    <div>
+                        <div class="invalid-feedback" *ngIf="newBookForm.controls.title.errors.required">
+                            Dieses Feld muss ausgefüllt werden!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="newBookForm.controls.title.errors.minLength">
+                            Der Titel muss länger als 2 Zeichen sein! Füge noch {{ newBookForm.controls.title.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actualLength }} Zeichen hinzu!
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input class="form-control" placeholder="Autor eingeben" formControlName="author" [class.is-valid]="newBookForm.controls.author.valid" [class.is-invalid]="submitted && newBookForm.controls.author.invalid">
+                    <div class="valid-feedback">
+                        Passt!
+                    </div>
+                    <div *ngIf="newBookForm.controls.author.errors">
+                        <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.required">
+                            Dieses Feld muss ausgefüllt werden!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.minLength">
+                            Der Titel muss länger als 2 Zeichen sein! Füge noch {{ newBookForm.controls.author.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actualLength }} Zeichen hinzu!
+                        </div>
+                    </div>
+                </div>
 
-            <div [class]="'alert alert-' + (newBookTitle.length <= maxTitleLength  ? 'primary' : 'warning') "
-                *ngIf=" newBookTitle !=  '' ">
-                <span *ngIf="newBookTitle.length <= maxTitleLength">Wenn sie auf den Button klicken, wird ein neues Buch
-                    mit dem Namen<i>{{ newBookTitle }}</i>erstellt.Und dem Autor {{ newBookAuthor }}.</span>
-                <span *ngIf="newBookTitle.length > maxTitleLength">Der Titel ist mit {{newBookTitle.length}} Zeichen
-                    {{newBookTitle.length >= maxTitleLength * 2 ? 'viel' : ''}} zulang
-                    {{newBookTitle.length >= maxTitleLength * 3 ? ', du Depp' : ''}}!</span>
+                <input class="form-control" placeholder="Preis eingeben" formControl="price" type="number">
+                <button class="mt-2 btn btn-outline-success" [disabled]="newBookForm.controls.author.value.length > maxTitleLength" (click)="addNewBook()">{{isEdeting ? 'Änderungen speichern' : 'Buch hinzufügen!'}} </button>
+            
+            </form>
+            <div [class]="'alert alert-' + (newBookForm.controls.title.value.length <= maxTitleLength  ? 'primary' : 'warning') " *ngIf=" newBookForm.controls.title.value !=  '' ">
+                <span *ngIf="newBookForm.controls.title.value.length <= maxTitleLength">Wenn sie auf den Button klicken,wird ein neues Buchmit dem Namen<i>{{ newBookForm.controls.title.value }}</i>erstellt.Und demAutor{{ newBookAuthor }}.</span>
+                <span *ngIf="newBookForm.controls.title.value.length > maxTitleLength">Der Titel ist mit{{newBookForm.controls.title.value.length}}Zeichen{{newBookForm.controls.title.value.length >= maxTitleLength * 2 ? 'viel' : ''}} zulang{{newBookForm.controls.title.value.length >= maxTitleLength * 3 ? ', du Depp' : ''}}!</span>
             </div>
         </div>
     </div>
