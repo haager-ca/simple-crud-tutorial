@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "ToDo",
+  "author": "C.Haager",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpileOnly ./index.ts"
+  },
+
+  "main": "index.js",
+
+  "dependencies": {
+    "express": "^4.17.1",
+    "ts-node-dev": "^1.0.0-pre.56"
+  },
+  "devDependencies": {}
+  
+}
