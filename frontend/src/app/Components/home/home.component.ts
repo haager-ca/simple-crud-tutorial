@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   public bookTitle: string = "Die unendliche Geschicht";
   public showAlert: boolean = true;
   public isEdeting: number = undefined;
-  public newBookPrice: number;
   public readonly maxTitleLength: number = 20;
   public books: Book[] = [];
   public newBookForm: FormGroup;
@@ -26,9 +25,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.books = this.storageService.getBooks();
     this.newBookForm = this.formBuilder.group({
-      title: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      author: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      price: new FormControl("", [Validators.required]),
+      title: new FormControl("", [Validators.required, Validators.minLength(4)]),
+      author: new FormControl("", [Validators.required, Validators.minLength(5)]),
     });
   }
 
@@ -49,7 +47,6 @@ export class HomeComponent implements OnInit {
         if (b.id == that.isEdeting) {
           b.title = that.newBookForm.controls.title.value;
           b.authors = that.newBookForm.controls.author.value.split(", ");
-          b.price = 10; //parseInt(this.newBookPrice, 10)
         }
         return b;
       });
@@ -59,7 +56,6 @@ export class HomeComponent implements OnInit {
       book.title = this.newBookForm.controls.title.value;
       book.id = Math.round(Math.random() * 100000);
       book.authors = this.newBookForm.controls.author.value.split(", ");
-      book.price = 10;
       book.publishDate = new Date();
       this.books.push(book);
     }

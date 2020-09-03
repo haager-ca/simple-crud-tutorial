@@ -6,7 +6,6 @@
                     <tr>
                         <th>Title</th>
                         <th>Autor(en)</th>
-                        <th>Preis</th>
                         <th>Veröffentlicht am</th>
                         <th>Aktionen</th>
                     </tr>
@@ -15,7 +14,7 @@
                     <tr *ngFor="let book of books">
                         <td>{{ book.title }}</td>
                         <td>{{ book.authors | jojnAuthors }}</td>
-                        <td>{{ book.price | currency: "EUR"}}</td>
+
                         <td>{{ book.publishDate | date: 'fullDate' }} {{ book.publishDate | date: 'shortTime' }}</td>
                         <td>
                             <button class="btn btn-outline-primary" (click)="editBook(book)">Bearbeiten</button>
@@ -29,8 +28,10 @@
             <form [formGroup]="newBookForm">
 
                 <div>
-                    <input class="form-control" placeholder="Neues Buch erstellen" formControlName="title" [class.is-valid]="newBookForm.controls.title.valid" [class.is-invalid]="submitted && newBookForm.controls.title.invalid">
-                    <div class="valid-feedback" >
+                    <input class="form-control" placeholder="Neues Buch erstellen" formControlName="title"
+                        [class.is-valid]="newBookForm.controls.title.valid"
+                        [class.is-invalid]="submitted && newBookForm.controls.title.invalid">
+                    <div class="valid-feedback">
                         Passt!
                     </div>
                     <div>
@@ -38,12 +39,16 @@
                             Dieses Feld muss ausgefüllt werden!
                         </div>
                         <div class="invalid-feedback" *ngIf="newBookForm.controls.title.errors.minLength">
-                            Der Titel muss länger als 2 Zeichen sein! Füge noch {{ newBookForm.controls.title.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actualLength }} Zeichen hinzu!
+                            Der Titel muss länger als 2 Zeichen sein! Füge noch
+                            {{ newBookForm.controls.title.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actualLength }}
+                            Zeichen hinzu!
                         </div>
                     </div>
                 </div>
                 <div>
-                    <input class="form-control" placeholder="Autor eingeben" formControlName="author" [class.is-valid]="newBookForm.controls.author.valid" [class.is-invalid]="submitted && newBookForm.controls.author.invalid">
+                    <input class="mt-2 form-control" placeholder="Autor eingeben" formControlName="author"
+                        [class.is-valid]="newBookForm.controls.author.valid"
+                        [class.is-invalid]="submitted && newBookForm.controls.author.invalid">
                     <div class="valid-feedback">
                         Passt!
                     </div>
@@ -52,18 +57,26 @@
                             Dieses Feld muss ausgefüllt werden!
                         </div>
                         <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.minLength">
-                            Der Titel muss länger als 2 Zeichen sein! Füge noch {{ newBookForm.controls.author.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actualLength }} Zeichen hinzu!
+                            Der Autor muss länger als 5 Zeichen sein! Füge noch
+                            {{ newBookForm.controls.author.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actuallLength }}
+                            Zeichen hinzu!
                         </div>
                     </div>
                 </div>
 
-                <input class="form-control" placeholder="Preis eingeben" formControl="price" type="number">
-                <button class="mt-2 btn btn-outline-success" [disabled]="newBookForm.controls.author.value.length > maxTitleLength" (click)="addNewBook()">{{isEdeting ? 'Änderungen speichern' : 'Buch hinzufügen!'}} </button>
-            
+                <button class="mt-2 btn btn-outline-success"
+                    [disabled]="newBookForm.controls.author.value.length > maxTitleLength"
+                    (click)="addNewBook()">{{isEdeting ? 'Änderungen speichern' : 'Buch hinzufügen!'}} </button>
+
             </form>
-            <div [class]="'alert alert-' + (newBookForm.controls.title.value.length <= maxTitleLength  ? 'primary' : 'warning') " *ngIf=" newBookForm.controls.title.value !=  '' ">
-                <span *ngIf="newBookForm.controls.title.value.length <= maxTitleLength">Wenn sie auf den Button klicken,wird ein neues Buchmit dem Namen<i>{{ newBookForm.controls.title.value }}</i>erstellt.Und demAutor{{ newBookAuthor }}.</span>
-                <span *ngIf="newBookForm.controls.title.value.length > maxTitleLength">Der Titel ist mit{{newBookForm.controls.title.value.length}}Zeichen{{newBookForm.controls.title.value.length >= maxTitleLength * 2 ? 'viel' : ''}} zulang{{newBookForm.controls.title.value.length >= maxTitleLength * 3 ? ', du Depp' : ''}}!</span>
+            <div [class]="'alert alert-' + (newBookForm.controls.title.value.length <= maxTitleLength  ? 'primary' : 'warning') "
+                *ngIf=" newBookForm.controls.title.value !=  '' ">
+                <span *ngIf="newBookForm.controls.title.value.length <= maxTitleLength">Wenn sie auf den Button
+                    klicken,wird ein neues Buch mit dem Namen<i>{{ newBookForm.controls.title.value }}</i>erstellt.Und
+                    dem Autor{{ newBookForm.controls.author.value }}.</span>
+                <span *ngIf="newBookForm.controls.title.value.length > maxTitleLength">Der Titel ist
+                    mit{{newBookForm.controls.title.value.length}}Zeichen{{newBookForm.controls.title.value.length >= maxTitleLength * 2 ? 'viel' : ''}}
+                    zulang{{newBookForm.controls.title.value.length >= maxTitleLength * 3 ? ', du Depp' : ''}}!</span>
             </div>
         </div>
     </div>
