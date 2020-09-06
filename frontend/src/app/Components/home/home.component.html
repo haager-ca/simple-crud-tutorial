@@ -38,9 +38,9 @@
                         <div class="invalid-feedback" *ngIf="newBookForm.controls.title.errors.required">
                             Dieses Feld muss ausgefüllt werden!
                         </div>
-                        <div class="invalid-feedback" *ngIf="newBookForm.controls.title.errors.minLength">
+                        <div class="invalid-feedback" *ngIf="newBookForm.controls.title.errors.minlength">
                             Der Titel muss länger als 2 Zeichen sein! Füge noch
-                            {{ newBookForm.controls.title.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actualLength }}
+                            {{ newBookForm.controls.title.errors.minlength.requiredLength - newBookForm.controls.title.errors.minlength.actualLength }}
                             Zeichen hinzu!
                         </div>
                     </div>
@@ -52,13 +52,14 @@
                     <div class="valid-feedback">
                         Passt!
                     </div>
+                    {{newBookForm.controls.author.errors | json}}
                     <div *ngIf="newBookForm.controls.author.errors">
                         <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.required">
                             Dieses Feld muss ausgefüllt werden!
                         </div>
-                        <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.minLength">
+                        <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.minlength">
                             Der Autor muss länger als 5 Zeichen sein! Füge noch
-                            {{ newBookForm.controls.author.errors.minLength.requiredLength - newBookForm.controls.author.errors.minLength.actuallLength }}
+                            {{ newBookForm.controls.author.errors.minlength.requiredLength - newBookForm.controls.author.errors.minlength.actualLength }}
                             Zeichen hinzu!
                         </div>
                     </div>
