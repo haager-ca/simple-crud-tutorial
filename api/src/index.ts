@@ -3,19 +3,23 @@ import routes from "./routes/index";
 import { createConnection } from "typeorm";
 import { User } from "./entities/user"
 import "reflect-metadata";
+import * as bodyParser from "body-parser";
 
 
 const connection = createConnection({
     type: "mysql",
     host: "localhost",
     username: "root",
-    password: "",
+    password: "26ca.08HA.",
     database: "simplecrudtutorial",
     entities: [User]
 }).then(async (connection) => {
+
+    await connection.synchronize();
     
     const app = express();
 
+    app.use(bodyParser.json());
 
     app.use("/api", routes);
 
