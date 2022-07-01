@@ -12,7 +12,9 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "ts-node-dev": "^1.0.0-pre.56",
-    "typeorm": "^0.2.25",
-    "typescript": "^3.9.7"
+    "typeorm": "^0.2.25"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
   }
 }
