@@ -10,8 +10,8 @@ createConnection({
     type: "mysql",
     host: "localhost",
     username: "root",
-    password: "",
-    database: "simpleCrudTutorialDB",
+    password: "26ca.08HA.",
+    database: "simplecrudtutorial",
 })
 
 
