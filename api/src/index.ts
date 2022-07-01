@@ -6,7 +6,7 @@ import "reflect-metadata";
 import * as bodyParser from "body-parser";
 
 
-const connection = createConnection({
+createConnection({
     type: "mysql",
     host: "localhost",
     username: "root",

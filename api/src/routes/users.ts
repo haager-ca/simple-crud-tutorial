@@ -4,8 +4,10 @@ import { User } from "../entities/user";
 export const router = Router();
 
 
-router.get("/", function (req, res) {
-    res.send("Hier kommmen später die Benutzer raus!");
+router.get("/", async function (req, res) {
+    const userRepository = getRepository(User);
+    const users = await userRepository.find();
+    res.send(users);
 });
 
 router.get("/:id", function (req, res) {
@@ -13,11 +15,21 @@ router.get("/:id", function (req, res) {
 });
 
 router.post("/", async function (req, res) {
+
+    /*if(!(req.body.name && req.body.nickname && req.body.nickname)) {
+        res.status(400);
+        res.send("Nicht alle DAten sind angegeben");
+        return;
+    }*/
+
     const userRepository = getRepository(User);
     const newUser = new User();
-    newUser.name = req.body.name;
-    newUser.nickname = req.body.nickname;
-    newUser.password = req.body.password;
+    newUser.name = ("Caius");
+    newUser.nickname = ("Liegestuhl");
+    newUser.password = ("abd123");
+    //newUser.name = req.body.name;
+    //newUser.nickname = req.body.nickname;
+    //newUser.password = req.body.password;
     await userRepository.save(newUser);
 
     res.send("Neuer Benutzer wurde angelegt.");
