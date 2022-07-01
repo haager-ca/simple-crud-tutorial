@@ -9,7 +9,7 @@ const connection = createConnection({
     type: "mysql",
     host: "localhost",
     username: "root",
-    password: "26ca.08HA.",
+    password: "",
     database: "simplecrudtutorial",
     entities: [User]
 }).then(async (connection) => {
