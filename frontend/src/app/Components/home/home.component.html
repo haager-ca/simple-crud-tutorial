@@ -52,7 +52,6 @@
                     <div class="valid-feedback">
                         Passt!
                     </div>
-                    {{newBookForm.controls.author.errors | json}}
                     <div *ngIf="newBookForm.controls.author.errors">
                         <div class="invalid-feedback" *ngIf="newBookForm.controls.author.errors.required">
                             Dieses Feld muss ausgefüllt werden!

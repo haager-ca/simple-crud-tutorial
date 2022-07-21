@@ -11,10 +11,6 @@ export class RemoteService {
     constructor(private httpClient: HttpClient, private storageService: StorageService) {
     }
 
-    public getImageUrl(url: string, authService: AuthenticationService): string {
-        return `/api/${url}?authorization=${authService.currentUser?.jwtToken}`;
-    }
-
     public get(url: string): Observable<any> {
         return this.httpClient.get(`/api/${url}`);
     }

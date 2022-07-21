@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { Router } from '@angular/router';
 

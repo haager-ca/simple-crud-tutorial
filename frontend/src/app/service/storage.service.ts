@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { stringify } from '@angular/compiler/src/util';
 import { Book } from '../classes/book';
 
 @Injectable({
